@@ -1,20 +1,34 @@
-'use client'
 import Image from 'next/image'
-import Logo from '../../assets/Logo.svg'
+import Logo from '../../../assets/Logo.svg'
 import { Ranking } from './ranking'
 import { Stats } from './Stats'
 import { InviteLink } from './Invite_link'
 
-export default function InvitePage() {
-    const inviteLink = 'https://localhost:/invite/asf54a5f45dsf4'
+interface InvitePageProps {
+    params: Promise<{
+        subscriberId: String
+
+    }>
+}
+
+export default async function InvitePage(props: InvitePageProps) {
+
+    const { subscriberId } = await props.params
+
+
+    const inviteLink = `http://localhost:3333/invites/${subscriberId}`
+
     return (
         <div className="min-h-dvh flex items-center justify-between gap-16    flex-col md:flex-row">
             <div className="flex flex-col gap-10 w-full max-w-[550px]">
                 <Image src={Logo} alt='devstage' width={108.5} height={30} />
 
                 <div className='space-y-2'>
-                    <h1 className='text-4xl font-semibold font-headind text-gray-100 leading-none'>Inscrição confirmada!</h1>
-                    <p className='text-gray-300'>Para entrar no evento, acesse o link enviado para o seu e-mail.
+                    <h1 className='text-4xl font-semibold font-headind text-gray-100 leading-none'>
+                        Inscrição confirmada!
+                    </h1>
+                    <p className='text-gray-300'>
+                        Para entrar no evento, acesse o link enviado para o seu e-mail.
                     </p>
                 </div>
 
@@ -27,7 +41,7 @@ export default function InvitePage() {
                         </p>
                     </div>
 
-                    <InviteLink inviteLink={inviteLink}/>
+                    <InviteLink inviteLink={inviteLink} />
 
                     <Stats />
 
