@@ -6,7 +6,7 @@ import { InviteLink } from './Invite_link'
 
 interface InvitePageProps {
     params: Promise<{
-        subscriberId: String
+        subscriberId: string
 
     }>
 }
@@ -43,7 +43,7 @@ export default async function InvitePage(props: InvitePageProps) {
 
                     <InviteLink inviteLink={inviteLink} />
 
-                    <Stats />
+                    <Stats subscriberId={subscriberId} />
 
                 </div>
             </div>

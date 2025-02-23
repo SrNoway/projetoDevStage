@@ -6,7 +6,7 @@ export default defineConfig ({
             output: {
                 target: './src/http/api.ts',
                 client: 'fetch',
-                httpClient: 'fetch',
+                httpClient: 'axios',
                 clean: true,
                 baseUrl: 'http://localhost:3333',
 
